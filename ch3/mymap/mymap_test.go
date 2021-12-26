@@ -15,12 +15,11 @@ func BenchmarkMayMapLoad(b *testing.B) {
 }
 
 func BenchmarkMayMapStore(b *testing.B) {
-	n := b.N
 	m := NewMyMap()
 	b.ResetTimer()
 	b.RunParallel(func(p *testing.PB) {
 		for p.Next() {
-			m.Store(n, b.N)
+			m.Store(b.N, b.N)
 		}
 	})
 }
@@ -36,12 +35,11 @@ func BenchmarkMayMapDelete(b *testing.B) {
 }
 
 func BenchmarkMayMapLoadOrStore(b *testing.B) {
-	n := b.N
 	m := NewMyMap()
 	b.ResetTimer()
 	b.RunParallel(func(p *testing.PB) {
 		for p.Next() {
-			m.LoadOrStore(n, b.N)
+			m.LoadOrStore(b.N, b.N)
 		}
 	})
 }
